@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Stacks_SetOfStacks
+{
+    class SetOfStacks
+    {
+        List<Stack<int>> stackItems = new List<Stack<int>>();
+        int stackThreshold;
+
+        public SetOfStacks(int stackThreshold)
+        {
+            this.stackThreshold = stackThreshold;
+        }
+        public void push(int v)
+        {
+            Stack<int> last = getLastStack();
+            if (last != null && last.Count < stackThreshold)
+            {
+                // add to last stack
+                last.Push(v);
+            }
+            else            {
+                // must create new stack
+                Stack<int> stack = new Stack<int>();
+                stack.Push(v);
+                stackItems.Add(stack);
+            }
+        }
+
+        public Stack<int> getLastStack()
+        {
+            return stackItems.Last();
+        }
+
+        public int pop()
+        {
+            Stack<int> last = getLastStack();
+            if (last == null)
+            {
+                throw new Exception("Stack Empty Exception.");
+            }
+            int v = last.Pop();
+            if (last.Count == 0)
+            {
+                stackItems.Remove(last);
+            }
+
+            return v;
+        }
+    }
+}
