@@ -29,6 +29,7 @@ namespace Stacks_With_Function_Min
         
         }
 
+
         public int min()
         {
             if (this.Count == 0)
