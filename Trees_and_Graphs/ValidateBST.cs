@@ -87,7 +87,7 @@ namespace Stacks_Create_Three_Stacks.Trees_and_Graphs
                 return false;
             }
 
-            if (!checkBST_Solution2(node.Left, min, node.Value) || checkBST_Solution2(node.Right, node.Value, max))
+            if (!checkBST_Solution2(node.Left, min, node.Value) || !checkBST_Solution2(node.Right, node.Value, max))
             {
                 return false;
             }
