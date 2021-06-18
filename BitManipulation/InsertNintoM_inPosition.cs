@@ -36,7 +36,44 @@ namespace CrackingCodeInterviewSample.BitManipulation
             int m_shifted = m << i; // Move m into correct position.
 
             return n_cleared | m_shifted; // OR them, and we're done.
+        }
 
+        public static int updateBitsMySolution()
+        {
+            // 0b_1010_0000
+            int N = 0b_10000000000; // 10000000000
+            int M = 0b_10011; // 10011 
+
+            int i = 2;
+            int j = 6;
+
+            int tempItemI = i - 1;
+
+            int mask = ~0;
+            int maskA = mask << tempItemI;
+            int maskB = mask << j;
+
+            int maskToUse = maskA ^ maskB;
+            maskToUse = ~maskToUse;
+
+            /*
+             10000000000
+                 10011
+            */
+
+
+            Console.WriteLine($"Mask : {Convert.ToString(mask, toBase: 2)}");
+            Console.WriteLine($"MaskA: {Convert.ToString(maskA, toBase: 2)}");
+            Console.WriteLine($"MaskB: {Convert.ToString(maskB, toBase: 2)}");
+            Console.WriteLine($"MaskR: {Convert.ToString(maskToUse, toBase: 2)}");
+
+
+            int newNValue = N & maskToUse;
+            int newM = M << i;
+            int result = newNValue | newM;
+
+            Console.WriteLine($"Result: {Convert.ToString(result, toBase: 2)}");
+            return result;
         }
     }
 }
