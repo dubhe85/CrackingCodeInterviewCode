@@ -13,7 +13,16 @@ namespace CrackingCodeInterviewSample.BitManipulation
     */
     class PairwiseSwapBits
     {
+        public int swapOddEvenBits(int x)
+        {
+            uint maskAllOddBits = 0xaaaaaaaa;
+            int allOddBitsMaskedResult = (int)(x & maskAllOddBits);
 
+            uint maskAllEvenBits = 0x55555555;
+            int allEvenBitsMaskedResult = (int)(x & maskAllEvenBits);
+
+            return ( (allOddBitsMaskedResult >> 1) | (allEvenBitsMaskedResult << 1) );
+        }
 
     }
 }
